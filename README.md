@@ -127,7 +127,7 @@ graph LR
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/mk-manish1105/documind.git
+git clone https://github.com/mk-manish1105/Documind.git
 cd documind
 ```
 
@@ -173,7 +173,7 @@ Create a `.env` file in the `backend` directory:
 
 ```env
 # Database
-DATABASE_URL=postgresql://user:password@localhost:5432/documind_db
+DATABASE_URL=postgresql://user:password@localhost:5432/Documind_db
 
 # Authentication
 JWT_SECRET=your-super-secret-key-change-this
