@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =====================================================
+       Document Metadata
+       ===================================================== -->
+  <meta charset="UTF-8" />
+  <title>DocuMind – AI Document Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Main application stylesheet -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+<!-- =====================================================
+     LOGIN / ONBOARDING MODAL
+     - Displayed before accessing the main app
+     - Contains product overview + auth forms
+     ===================================================== -->
+<div id="loginModal" class="modal">
+  <div class="modal-container">
+
+    <!-- =================================================
+         LEFT PANEL: PRODUCT INTRODUCTION & INSTRUCTIONS
+         ================================================= -->
+    <div class="modal-info">
+
+      <!-- App branding -->
+      <div class="info-header">
+        <h1>DocuMind</h1>
+        <p class="tagline">Adaptive AI-Powered Document Intelligence Assistant</p>
+      </div>
+
+      <!-- ===============================
+           Feature Overview
+           =============================== -->
+      <div class="info-section">
+        <h3>🚀 What DocuMind Can Do</h3>
+        <ul class="feature-list">
+
+          <!-- Feature: Document-based chat -->
+          <li>
+            <span class="icon">📄</span>
+            <div>
+              <strong>Smart Document Chat</strong>
+              <p>Upload PDFs, DOCX, or text files and ask questions about their content</p>
+            </div>
+          </li>
+
+          <!-- Feature: Adaptive context handling -->
+          <li>
+            <span class="icon">🔍</span>
+            <div>
+              <strong>Intelligent Context Switching</strong>
+              <p>Automatically decides when to use your documents or general knowledge</p>
+            </div>
+          </li>
+
+          <!-- Feature: Persistent conversations -->
+          <li>
+            <span class="icon">💬</span>
+            <div>
+              <strong>Session Management</strong>
+              <p>All conversations are saved and organized for easy reference</p>
+            </div>
+          </li>
+
+          <!-- Feature: Fast semantic retrieval -->
+          <li>
+            <span class="icon">⚡</span>
+            <div>
+              <strong>Fast Semantic Search</strong>
+              <p>FAISS-powered retrieval finds relevant content instantly</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ===============================
+           Usage Instructions
+           =============================== -->
+      <div class="info-section">
+        <h3>📋 How to Use</h3>
+        <ol class="steps-list">
+
+          <li>
+            <strong>Sign In or Continue as Guest</strong>
+            <p>
+              Create an account to upload documents and receive answers that use your files.
+              Guest users can ask general questions using built-in knowledge — document upload
+              and document-based answers are disabled for guests.
+            </p>
+          </li>
+
+          <li>
+            <strong>Upload & Store Documents</strong>
+            <p>
+              After signing in, upload PDF, DOCX, or TXT files. Your documents are securely
+              stored and remain available until you delete them manually.
+            </p>
+          </li>
+
+          <li>
+            <strong>Ask Questions & Generate Insights</strong>
+            <p>
+              Ask specific questions about your uploaded documents or request automatically
+              generated questions, summaries, and explanations derived from the content.
+            </p>
+          </li>
+
+          <li>
+            <strong>Continue Conversations Anytime</strong>
+            <p>
+              Your uploaded documents stay connected to your account so you can return anytime
+              and continue asking questions with full context.
+            </p>
+          </li>
+
+        </ol>
+      </div>
+
+      <!-- ===============================
+           Creator / Author Information
+           =============================== -->
+      <div class="info-section creator-info">
+        <h3>👨‍💻 About the Creator</h3>
+
+        <div class="creator-card">
+          <!-- Avatar initials -->
+          <div class="creator-avatar">MK</div>
+
+          <div class="creator-details">
+            <h4>Manish Kumar</h4>
+            <p class="creator-role">
+              Aspiring AI/ML Engineer (NLP & LLM) & B.Tech Student (IT)
+            </p>
+            <p class="creator-location">📍 Jaipur, Rajasthan, India</p>
+
+            <!-- Social & contact links -->
+            <div class="creator-links">
+              <a href="https://linkedin.com/in/manishkumar1105" target="_blank" rel="noopener">
+                LinkedIn
+              </a>
+              <a href="https://github.com/mk-manish1105" target="_blank" rel="noopener">
+                GitHub
+              </a>
+              <a href="mailto:mkmanish1105@gmail.com">
+                Email
+              </a>
+            </div>
+
+            <!-- Academic / professional highlights -->
+            <div class="creator-highlights">
+              <span class="highlight">🎓 Arya College of Engineering & IT</span>
+              <span class="highlight">🔬 Ex-DRDO Research Intern</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =================================================
+         RIGHT PANEL: AUTHENTICATION FORMS
+         ================================================= -->
+    <div class="modal-box">
+
+      <!-- ===============================
+           Login Form
+           =============================== -->
+      <div id="loginForm" class="auth-form">
+        <h2>Welcome Back</h2>
+        <p class="login-subtitle">
+          Sign in to access your documents and chat history
+        </p>
+
+        <input id="loginEmail" type="email" placeholder="Email" autocomplete="email" />
+        <input id="loginPassword" type="password" placeholder="Password" autocomplete="current-password" />
+
+        <button id="loginBtn" type="button">Login</button>
+        <button id="guestBtn" type="button" class="tertiary">Continue as Guest</button>
+
+        <p id="loginError" class="auth-error"></p>
+
+        <p class="toggle-text">
+          Don't have an account?
+          <a href="#" id="showRegister" class="toggle-link">Create one</a>
+        </p>
+      </div>
+
+      <!-- ===============================
+           Registration Form
+           =============================== -->
+      <div id="registerForm" class="auth-form" style="display: none;">
+        <h2>Create Account</h2>
+        <p class="login-subtitle">
+          Sign up to save your documents and chat history
+        </p>
+
+        <input id="registerEmail" type="email" placeholder="Email" autocomplete="email" />
+        <input id="registerPassword" type="password" placeholder="Password (min 6 characters)" autocomplete="new-password" />
+        <input id="registerConfirmPassword" type="password" placeholder="Confirm Password" autocomplete="new-password" />
+
+        <button id="registerBtn" type="button">Create Account</button>
+        <p id="registerError" class="auth-error"></p>
+
+        <p class="toggle-text">
+          Already have an account?
+          <a href="#" id="showLogin" class="toggle-link">Sign in</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =====================================================
+     PROCESSING OVERLAY
+     - Shown while documents are uploading/indexing
+     ===================================================== -->
+<div id="processingOverlay" class="processing-overlay hidden" aria-hidden="true">
+  <div class="processing-box">
+    <div class="processing-header">
+      <div id="overlaySpinner" class="spinner" aria-hidden="true"></div>
+
+      <div class="processing-content">
+        <div id="overlayMessage">Uploading & indexing documents…</div>
+        <div class="processing-details" id="processingDetails">
+          Your chat history remains visible. Please wait while we process your files.
+        </div>
+
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =====================================================
+     MAIN APPLICATION UI
+     ===================================================== -->
+<div id="app" class="hidden">
+
+  <!-- ===============================
+       Sidebar (Chats & Documents)
+       =============================== -->
+  <aside id="sidebar">
+    <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+    <div class="sidebar-header">
+      <h3>Chats</h3>
+      <button id="newChatBtn">＋</button>
+    </div>
+
+    <!-- Chat session list -->
+    <ul id="sessionList"></ul>
+
+    <!-- User documents list -->
+    <div id="docsSection" class="sidebar-docs">
+      <div class="docs-header">
+        <strong>Your Documents</strong>
+        <span id="docsHint" class="muted">(login to manage)</span>
+      </div>
+      <div id="documentsList" class="documents-list"></div>
+    </div>
+
+    <!-- User profile & logout -->
+    <div class="sidebar-footer">
+      <div id="userProfile" class="user-profile" style="display: none;">
+        <div class="user-avatar" id="userAvatar">MK</div>
+        <div class="user-info">
+          <div class="user-name" id="userName">Manish Kumar</div>
+          <div class="user-status">● Online</div>
+        </div>
+      </div>
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </aside>
+
+  <!-- ===============================
+       Main Content Area
+       =============================== -->
+  <main>
+
+    <!-- Document upload section -->
+    <section id="uploadSection">
+      <input type="file" id="fileInput" multiple />
+      <button id="uploadBtn">Upload Documents</button>
+      <div id="uploadStatus" class="muted small"></div>
+    </section>
+
+    <!-- Chat messages -->
+    <section id="chatWrapper">
+      <div id="chat"></div>
+    </section>
+
+    <!-- Message composer -->
+    <section id="composer">
+      <div class="composer-wrapper">
+        <textarea id="messageInput" placeholder="Ask me anything..." rows="1"></textarea>
+        <button id="sendBtn">↑</button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- =====================================================
+     Scripts
+     ===================================================== -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="./app.js?v=2"></script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+# =========================
+# Web Framework & Server
+# =========================
+
+fastapi==0.110.0
+# Core backend framework for building APIs
+
+uvicorn[standard]==0.29.0
+# ASGI server to run FastAPI (includes uvloop, httptools for performance)
+
+
+# =========================
+# Database & ORM
+# =========================
+
+sqlalchemy==2.0.29
+# ORM for database modeling and queries
+
+psycopg2-binary==2.9.9
+# PostgreSQL database driver
+
+python-dotenv==1.0.1
+# Loads environment variables from .env file
+
+
+# =========================
+# Authentication & Security
+# =========================
+
+passlib[bcrypt]==1.7.4
+# Password hashing utilities (bcrypt support)
+
+bcrypt==4.0.1
+# Secure password hashing algorithm
+
+python-jose[cryptography]==3.3.0
+# JWT creation and validation
+
+email-validator==2.1.1
+# Email validation for user registration
+
+python-multipart==0.0.9
+# Required for handling form-data (file uploads & OAuth2 login)
+
+
+# =========================
+# Core ML / Vector Search
+# =========================
+
+numpy==1.26.4
+# Numerical computing (embeddings, FAISS compatibility)
+
+faiss-cpu==1.7.4
+# Vector similarity search engine (CPU version)
+
+
+# =========================
+# Deep Learning & NLP
+# =========================
+
+torch==2.1.2
+# Deep learning backend for transformers
+
+transformers==4.36.2
+# Hugging Face Transformers library
+
+sentence-transformers==2.2.2
+# Sentence embeddings (used for semantic search)
+
+huggingface_hub==0.20.3
+# Model downloads & caching from Hugging Face Hub
+
+
+# =========================
+# Document Processing
+# =========================
+
+PyMuPDF==1.22.5
+# PDF text extraction
+
+python-docx==1.2.0
+# DOCX file text extraction
+
+sentence-splitter==1.4
+# Sentence-based text splitting (fallback-safe)
