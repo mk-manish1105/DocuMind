@@ -1,0 +1,30 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+
+# Environment files
+.env
+.env.*
+
+# Local data / uploads
+user_data/
+data/
+uploads/
+
+# Git
+.git
+.gitignore
+
+# OS / editor
+.DS_Store
+.vscode
+.idea
+
+# Node (just in case)
+node_modules/
+dist/
