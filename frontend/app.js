@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------
   // Configuration & State
   // ------------------------
-  const API = "http://52.66.133.212:8000";    // backend root
+  const API = "https://outcome-subjects-determination-timer.trycloudflare.com";
+    // backend root
   const TOKEN_KEY = "documind_token";     // localStorage key for JWT
 
   // Local runtime state
