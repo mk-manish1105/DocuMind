@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------
   // Configuration & State
   // ------------------------
-  const API = "http://127.0.0.1:8000";    // backend root (change for production)
+  const API = "http://52.66.133.212:8000";    // backend root
   const TOKEN_KEY = "documind_token";     // localStorage key for JWT
 
   // Local runtime state
