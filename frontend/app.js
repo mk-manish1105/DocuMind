@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------
   // Configuration & State
   // ------------------------
-  const API = "https://hampton-mind-reform-vegetarian.trycloudflare.com";
+  const API = "https://gmt-guided-wanting-oakland.trycloudflare.com";
     // backend root
   const TOKEN_KEY = "documind_token";     // localStorage key for JWT
 
