@@ -830,10 +830,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } catch (err) {
       console.error("sendMessage error", err);
-      appendSystem("Network error while contacting server.");
+      appendSystem(
+        "⚠️ The backend is currently paused to optimize cloud resource usage. " +
+        "This project is actively maintained and can be resumed on demand."
+      );
     }
   }
-
+s
   // ------------------------
   // Documents UI state / upload handler
   // ------------------------
